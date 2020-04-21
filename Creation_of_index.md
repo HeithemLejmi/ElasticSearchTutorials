@@ -1,3 +1,5 @@
+# Opérations Index
+
 ## I- Create Index:
 Au moment de creation de l'index, on définit:
 - son nom (qu'est son identifiant unique)

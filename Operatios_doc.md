@@ -1,3 +1,4 @@
+# Opérations document:
 ## I- Creation d'un document (Indexation de document):
 * L'indexation de document signifie la création de document en l'affectant à un index. Cela peut se faire par un appel API "PUT" ou "POST":
   - Si on utilise l'appel "PUT" pour la création d'un document, il faut absolument préciser l'**_id** de ce document (sinon on aura un message d'erreur demandant soit de préciser l'id, soit de passer par l'appel "POST" si on ne souhaite pas préciser l'id de doc):
