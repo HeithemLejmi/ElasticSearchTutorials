@@ -31,7 +31,7 @@
   ```
 - Remarque:  le moment de création de document, on peut toujours mettre à jour le mapping de l'index (ce pourquoi on dit que ES est schemaless):
   - on peut ajouter des nouveaux fields ou meme changer le type d'un field déjà existant.
-  - par exemple dans cet exemple ci-dessous, on changer le type de field2 à "text" et on a ajouté un nouveau field (field4) en lui donnant la valeur (3) => ES va comprendre qu'il doit ajouter un nouveau field (field4) au mapping de notre index, et que son type doit etre "integer" (en se basant sur la valeur qu'on a donné à ce nouveau field)
+  - par exemple dans cet exemple ci-dessous, on change le type de field2 à "text" et on a ajouté un nouveau field (field4) en lui donnant la valeur (3) => ES va comprendre qu'il doit ajouter un nouveau field (field4) au mapping de notre index, et que son type doit etre "integer" (en se basant sur la valeur qu'on a donné à ce nouveau field)
     ```javascript
     POST {name_index}/_doc
     {
@@ -129,11 +129,12 @@ POST {name_index}/_update/{id_doc}
 DELETE {name_index}/_doc/{id_doc}
 ```
 - Remarque: 
-  - Après cet appel "DELETE", **Apache Lucene** ne supprime pas directement ce document. Il le marque uniquement comme "**deleted**". 
-  - Ensuite (après un certain intervalle qu'on peut le regler dans le settings), **Lucene** passe à travers les shards pour les nettoyer en supprimant définitivement les docs qui sont marqués comme "**deleted**".
+  - Après cet appel "DELETE", **Apache Lucene** ne supprime pas directement ce document. Il le marque uniquement comme "**deleted**" et incrémente sa version. 
+  **NB.**: Un document marqué comme **deleted** n'apparait pas dans le résultat de recherche.
+  - Ensuite (après un certain intervalle qu'on peut le régler dans le settings), **Lucene** passe à travers les shards pour les nettoyer en supprimant définitivement les docs qui sont marqués comme "**deleted**".
   - Ce pourquoi, lorsque on essaye de recréer un doc **avec le meme _id que le doc qu'a été supprimé** (afin de remplacer le doc qu'a été supprimé), on va remarqué que la version de nouveau document ne sera pas : 1, mais plutot la version incrementée du doc, qu'a été supprimé, portant précedement ce meme _id. (voir l'exemple ci-dessous)
 
-- Exemple: si on souhaite supprimé le document portant l'_id **5rk7ZHEBkCzlIo0Xy1pC** de l'index **sogeti_skills_manager**:
+- Exemple: si on souhaite supprimer le document portant l'_id **5rk7ZHEBkCzlIo0Xy1pC** de l'index **sogeti_skills_manager**:
     - on lance l'appel "DELETE":
     ```javascript
     DELETE sogeti_skills_manager/_doc/5rk7ZHEBkCzlIo0Xy1pC
