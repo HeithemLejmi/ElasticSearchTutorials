@@ -28,7 +28,7 @@ PUT {name_index}
 ```
 
 ## II- Update the index's settings & mappings:
-Tout les champs de mappings et settings sont modifiables et suceptibles de mise à jour, *** sauf le nombre de shards qu'est non-modifiable ***:
+Tout les champs de mappings et settings sont modifiables et suceptibles de mise à jour, **sauf le nombre de shards qu'est non-modifiable**:
 
 * Mettre à jour, par exemple le nombre de replicas:
 
