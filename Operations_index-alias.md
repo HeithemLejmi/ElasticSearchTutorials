@@ -50,7 +50,7 @@ ou dans un seul appel
 POST index-*/_alias/index-alias-1
 ```
 
-De cette façon, l'index-alias "**index-alias-1**" va faire réf aux index 1, 2 et 3 et donc va contenir la somme de docs contenus déjà dans ce docs (c'est à dire une totalité de 24 docs).
+De cette façon, l'index-alias "**index-alias-1**" va faire réf aux index 1, 2 et 3 et donc va contenir la somme de docs contenus déjà dans ces index (c'est à dire une totalité de 24 docs).
 
 #### 2- Création d'Index-Alias avec filtrage des docs:
 - En utilisant l'option "**filter**" dans notre request au moment de création de l'index-alias, ce dernier sera appliqué que sur les docs retournés par ce filtre:
