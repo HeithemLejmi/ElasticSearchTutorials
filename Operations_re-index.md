@@ -2,6 +2,7 @@
 ## I- Définition:
 - La **re-indexation** de data, présente dans un ancien index, vers un nouveau index = copier tout (ou une partie) de data de cet ancien index vers le nouveau index.
 - Re-indexation permet de re-indexer/copier la totalité (ou une partie) de data d'un ancien index vers le nouveau index (qui est déjà initialisé)
+- **Attention !!: Re-index permet de copier les docs d'un index source vers un index destinataire, et ne permet jamais de déplacer (move) les documents entre les index (çàd: les docs re-indexés restent tjrs présents dans l'index source).
 ## II- Pourquoi/Quand on fait re-indexation ?
 - On fait la re-indexation de data dans deux cas:
     - **1er cas:** Si on souhaite ajouter un nouveau field ou modifier un field déjà existant dans le mappings d'index (par exp: le champs "age" était non-searchable, et on souhaite le rendre searchable).
@@ -9,9 +10,14 @@
     Si le volume de data dans l'ancien index est devenu très grand et le nb de shards de cet index est trop faible (2 shards par exp):
     Dans ce cas, la solution est d'augmenter le nb de shards (afin de partager ce grand volume de data sur bcp plus de shards). Mais, on sait déjà que le nombre de shards, dans un index déjà créé, est non modifiable.
     C'est ici où on fait la **re-indexation**: on re-indexe le data de l'ancien index (ayant le faible nombre de shards) vers un nouveau index (ayant un nombre plus élévé de shards).
-    Pour faire cela, on passe par deux étapes: (1) créer/initialiser un nouveau index avec les nouveaux settings (nombre de shrds..) et les nouveaux mappings (nvx fields ou fields modifiés). (2) re-indexer les data de l'ancien index vers ce nouveau index déjà initialisé.
-    Donc, la **re-indexation** ne copie pas les fields de settings & mappings, mais plutot les valeurs de ces fields (dans les settings & mappings déjà créés dans le nouveau index)
-## III- API Request de Re-indexation:
+    Pour faire cela, on passe par deux étapes: (1) créer/initialiser un nouveau index avec les nouveaux settings (nombre de shrds..) et les nouveaux mappings (nvx fields ou fields modifiés). (2) re-indexer les documents de l'ancien index vers ce nouveau index déjà initialisé.
+    Donc, la **re-indexation** ne copie pas les settings / fields settings, de l'index source vers l'index destinatatire (elle copie les documents uniquement).
+    
+## III- Inconvénient de la re-indexation:
+- En parlant de re-indexation de docs, on parle justement de copier les datas d'un index vers un autre. Par conséquent, le meme data sera stocké dans deux index au meme temps (l'index source et destinataire) => Le data va occuper plus d'espace de
+stockage => Augmentation de couts de stockage.
+
+## IV- API Request de Re-indexation:
 - Il y a deux manières pour faire l'opération de re-indexation de data:
 ### 1. Opération de re-indexation basique:
 - Cette request permet de re-indexer tout le data dés l'index source (nommé "index_1" dans l'exemple) vers l'index destinataire (nommé new_index_1 dans l'exemple):
@@ -46,7 +52,7 @@
          
     }
   ```
-## IV- Le paramètre "version_type":  
+## V- Le paramètre "version_type":  
 ### 1- Problématique:
 - Si au moment de reindexation, on se rend compte qu'un doc (d'id=1) de l'ancien index existe déjà dans l'index destinataire (çàd: il y a déjà un autre doc dans l'index dest. avec l'id=1).
 - Comment ES va réagir dans ce cas:
