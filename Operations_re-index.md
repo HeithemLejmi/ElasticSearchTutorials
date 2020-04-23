@@ -55,7 +55,7 @@
   - **3** ou il va reindexer que les docs non existants.
 - La réaction d'ES (1, 2 et 3) sera décidée grace au propriété "**version_type**", qui sera définie au moment de re-indexation request.
 ### 2- Version_type = "internal" OU Version_type empty (non spécifié):
-- Dans ce cas **ES is going to blindly dump documents int the target index over-writing any that happen to have the same id*
+- Dans ce cas **ES is going to blindly dump documents in the target index over-writing any that happen to have the same id*
 - Si le doc existe déjà dans l'index dest. (çàd son id existe déjà dans l'index dest): 
     - ES va updater/màj TOUT ces docs, peu importe leur version dans l'index destinataire.
     - Et ES va incrémenter la version de ces docs
