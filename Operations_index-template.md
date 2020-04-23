@@ -91,7 +91,7 @@ PUT _template/elastic-logs
       - Le template ayant **la plus faible valeur de paramètre order** sera appliqué le premier.
       - Le template ayant **la plus grande valeur de paramètre order** sera appliqué le dernier et donc va over-write les settings & mappings des autres templates dont l'**order** est plus inférieur.
 ### 2. Exemple:
-- **1** Si on définit deux templates ayant le meme index_patterns mais avec deux valeurs différentes de paramètre **order**:
+- **1.** Si on définit deux templates ayant le meme index_patterns mais avec deux valeurs différentes de paramètre **order**:
     - Template **logs** avec un **order** égal à 1:
     ```javascript
     PUT _template/logs
@@ -128,13 +128,13 @@ PUT _template/elastic-logs
                 
     }
     ```
-- **2** Maintenant si on lance une API request pour créer un nouveau index (dont le nom match le **index_patterns** de deux templates) :
+- **2.** Maintenant si on lance une API request pour créer un nouveau index (dont le nom match le **index_patterns** de deux templates) :
   ```javascript
     PUT elastic-log-sys-1
   ```
     - **=>** Cet appel permet de créer un index nommé **elastic-log-sys1** selon le template ayant le plus grand **order**, çàd le template **elastic-logs**, car: (a) le nom de cet index match l'index_patterns de deux templates **logs** et **elastic-logs** (b) le template **elastic-logs**, ayant l'order le plus élévé, va over-write les settings & mappings de template **logs**
 
-- **3** Si on lance une API GET pour recupérer notre index récement créé **elastic-log-sys-1** => on remarquera que les settings & mappings de cet index  correspond à ceux de template  **elastic-logs**:
+- **3.** Si on lance une API GET pour recupérer notre index récement créé **elastic-log-sys-1** => on remarquera que les settings & mappings de cet index  correspond à ceux de template  **elastic-logs**:
   ```javascript
     GET elastic-log-sys-1
   ```
