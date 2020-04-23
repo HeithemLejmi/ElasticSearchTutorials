@@ -4,8 +4,8 @@
 - Re-indexation permet de re-indexer/copier la totalité (ou une partie) de data d'un ancien index vers le nouveau index (qui est déjà initialisé)
 ## II- Pourquoi/Quand on fait re-indexation ?
 - On fait la re-indexation de data dans deux cas:
-    - **1er cas** Si on souhaite ajouter un nouveau field ou modifier un field déjà existant dans le mappings d'index (par exp: le champs "age" était non-searchable, etvon souhaite le rendre searchable).
-    - **2ème cas** Reindexation pour modifier le nombre de shards:
+    - **1er cas:** Si on souhaite ajouter un nouveau field ou modifier un field déjà existant dans le mappings d'index (par exp: le champs "age" était non-searchable, et on souhaite le rendre searchable).
+    - **2ème cas :** Reindexation pour modifier le nombre de shards:
     Si le volume de data dans l'ancien index est devenu très grand et le nb de shards de cet index est trop faible (2 shards par exp):
     Dans ce cas, la solution est d'augmenter le nb de shards (afin de partager ce grand volume de data sur bcp plus de shards). Mais, on sait déjà que le nombre de shards, dans un index déjà créé, est non modifiable.
     C'est ici où on fait la **re-indexation**: on re-indexe le data de l'ancien index (ayant le faible nombre de shards) vers un nouveau index (ayant un nombre plus élévé de shards).
