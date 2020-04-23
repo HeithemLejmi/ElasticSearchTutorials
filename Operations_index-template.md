@@ -1,19 +1,19 @@
 # Operations Index-Template:
 ## I- Definition & Cas d'usage:
-- **1** Le template d'index définit : les settings + le mappings, qu'on peut les re-utiliser et les appliquer automatiquement 
+- **1.** Le template d'index définit : les settings + mappings, qu'on peut les re-utiliser et les appliquer automatiquement 
 au moment de création de nouveaux index (à la place d'écrire les settings & mappings,  à chaque fois qu'on souhaite créer un index, il suffit maintenant de définir un index-template et de l'appeler au moment de création d'index pour l'utiliser afin de créer cet index).
 
 **=>** Donc comme son nom indique, l'index-template sert commme un blueprint re-utilisable pour la création de autres instances des index qu'auront tous ses meme settings & mappings.
 
-- **2** ES applique les templates aux nouveaux index à créer, en se basant à un **index_patterns** qui match le nom de l'index à créer.
+- **2.** ES applique les templates aux nouveaux index à créer, en se basant à un **index_patterns** qui match le nom de l'index à créer.
 
-**=>** L'**index_patterns** est un paramètre qu'on définit au moment de création/défintiion de l'index-template, et qui précise aux quels index cette template s'appliquera.
+**=>** L'**index_patterns** est un paramètre qu'on définit au moment de création/défintiion de l'index-template, et qui précise aux quels index ce template s'appliquera.
 
-- **3** Le changement au niveau de template n'affecte pas les index déjà existants (qu'ont été créé par cette template).
+- **3.** Le changement au niveau de template n'affecte pas les index déjà existants (qu'ont été créé par ce template).
 
-**=>** Ce changement au niveau de template va affecter seulement les nouveaux index qui seront créés par cette template, et pas les index qu'on a déjà créé par cette template.
+**=>** Ce changement au niveau de template va affecter seulement les nouveaux index qui seront créés par ce template, et pas les index qu'on a déjà créé par ce template.
 
-- **4** Si on souhaite créer un nouveau index, dont le nom match l'index_patterns de notre template, mais qu'on passe des settings & mappings dans le body de API request de la création de l'index: Quels settings & mappings seront appliqués dans ce cas : ceux de template ou ceux définis dans le body request de l'appel API de create index ?
+- **4.** Si on souhaite créer un nouveau index, dont le nom match l'index_patterns de notre template, mais qu'on passe des settings & mappings dans le body de API request de la création de l'index: Quels settings & mappings seront appliqués dans ce cas : ceux de template ou ceux définis dans le body request de l'appel API de create index ?
 
 **=>** Ces sont les settings & mappings définis dans le body request de l'appel API de create index qui vont over-write ceux de template.
 
