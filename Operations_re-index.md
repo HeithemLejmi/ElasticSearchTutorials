@@ -12,7 +12,7 @@
     Pour faire cela, on passe par deux étapes: (1) créer/initialiser un nouveau index avec les nouveaux settings (nombre de shrds..) et les nouveaux mappings (nvx fields ou fields modifiés). (2) re-indexer les data de l'ancien index vers ce nouveau index déjà initialisé.
     Donc, la **re-indexation** ne copie pas les fields de settings & mappings, mais plutot les valeurs de ces fields (dans les settings & mappings déjà créés dans le nouveau index)
 ## III- API Request de Re-indexation:
-- Il y a deux manières pour faire l'iopération de re-indexation de data:
+- Il y a deux manières pour faire l'opération de re-indexation de data:
 ### 1. Opération de re-indexation basique:
 - Cette request permet de re-indexer tout le data dés l'index source (nommé "index_1" dans l'exemple) vers l'index destinataire (nommé new_index_1 dans l'exemple):
   ```javascript
