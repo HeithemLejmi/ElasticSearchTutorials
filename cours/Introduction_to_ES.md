@@ -30,7 +30,7 @@ ES est schemaless (contrairement au BDR), çàd qu'il y a pas besoin de définir
 => un index est composé d'au moins un shard (1 ou plusieurs shards), et chaque shard (fragment) peut avoir zero ou plusieurs replicas. 
 Remarques:
 * on ne peut pas créer un index sans aucun shard, ce pourquoi on a dit qu'un index doit etre composé d'au moins un shard.
-* Les datas contenus dans l'index sera distribué/partagé sur ses shards, çàd si l'index a un seul shard, cela veut dire que ce shard contient le 100% de data de son index.
+* Les datas contenus dans l'index seront distribués/partagés sur ses shards, çàd si l'index a un seul shard, cela veut dire que ce shard contient le 100% de data de son index.
 * un replica est une copie d'un shard
 
 #### 1) Shard
