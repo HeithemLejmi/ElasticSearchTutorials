@@ -2,7 +2,7 @@
 
 ## I- Composition d'Elastic Stack:
 - Il est composé de : Elasticsearch + Logstash + Kibana
-- Logastash: responsable d'alimenter l'Elastic search avec le data, il s'occuper d'extraire/filtrer/traiter les datas venant de plusieurs sources de data (logs d'apache, restful API, kafka, ..) et les pousser dans Elastic search.
+- Logastash: responsable d'alimenter l'Elastic search avec le data, il s'occupe d'extraire/filtrer/traiter les datas venant de plusieurs sources de data (logs d'apache, restful API, kafka, ..) et les pousser dans Elastic search.
 - Elastic search est le coeur et la base d'ELK stack.. il reçoit le data de Logstach et le visualise sur Kibana. Elastic search stocke le data et donne des fonctionnalités de recherche à travers ce data (Elastic search, joue à la fois le role de base de données (no sql) et le moteur de recherche)
 - Kibana est un outil de visualistation et l'UI de l'ELK stack
 
