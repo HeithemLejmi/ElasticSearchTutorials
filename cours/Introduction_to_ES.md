@@ -12,13 +12,10 @@ Les Data, en ES, sont contenus dans un index:
 ### A- Disposition logique de Data dans l'index: Index est composé des documents
 #### 1) Index:
 - c'est une collection de documents ayant des caractéristiques (fields) similaires...
-- En analogie avec les BDR, un undex représente un tableau, et un doc dans l'index représente un row dans ce table (index).
+- En analogie avec les BDR, un index représente un tableau, et un doc dans l'index représente un row dans ce table (index).
 - un index est caractérisé par son nom: 
----> qui doit etre en lettres miniscules 
----> le nom d'index est utilisé pour faire réf à cet index, dans toutes les opérations:
-* indexation des documents
-* search 
-* update/delete des documents.. 
+  - qui doit etre en lettres miniscules 
+  - le nom d'index est utilisé pour faire réf à cet index, dans toutes les opérations: indexation des documents, search, update/delete des documents.. 
 
 #### 2) Document:
 - c'est l'information de base (unité de base) dans ES, qu'on peut l'indexr (le mettre en index), par exp:
