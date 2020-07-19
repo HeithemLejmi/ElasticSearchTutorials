@@ -30,20 +30,20 @@ ES est schemaless (contrairement au BDR), çàd qu'il y a pas besoin de définir
 => un index est composé d'au moins un shard (1 ou plusieurs shards), et chaque shard (fragment) peut avoir zero ou plusieurs replicas. 
 Remarques:
 * on ne peut pas créer un index sans aucun shard, ce pourquoi on a dit qu'un index doit etre composé d'au moins un shard.
-* Les datas contenus dans l'index sera distribé/partagé sur ses shards, çàd si l'index a un seul shard, cela veut dire que ce shard contient le 100% de data de son index.
+* Les datas contenus dans l'index sera distribué/partagé sur ses shards, çàd si l'index a un seul shard, cela veut dire que ce shard contient le 100% de data de son index.
 * un replica est une copie d'un shard
 
 #### 1) Shard
-- Chaque shard est considéré comme fully-functional and independent index qui peut etre hébergé dans n'importe quelle noeud (serveur) de notre cluster.
+- Chaque shard est considéré comme fully-functional and independent index qui peut etre hébergé dans n'importe quel noeud (serveur) de notre cluster.
 - nb de shards, sur lequels est partagé notre index, est défini au moment de creation de cet index (le nb de shards est non modifiable, une fois l'index est créé, on ne peut plus modifier son nobmre de shards)
 
 #### 2) Avantage d'utilisation de shards:
 - Les shards nous permettent de faire de up-scalling: partager horizontallement le volume total de data de l'index sur plusieurs shards.
-- la mise de place de data sur plusieurs shards, nous permet de augmenter la performance et le débit des operations effectuées sur ce data: parallèliser les operations (sur plusieurs shards), par exp faire la recherche sur des plusieurs petits shards (contenant chacun une partie de data) sera plus rapide et efficace que faire la recherche sur un seul gros volume de data centralisé dans un seul shard representant la totalité de l'index.
+- la mise de place de data sur plusieurs shards, nous permet de augmenter la performance et le débit des operations effectuées sur ce data: parallèliser les operations (sur plusieurs shards), par exp faire la recherche sur des plusieurs petits shards (contenant chacun une partie de data) sera plus rapide et efficace que faire la recherche sur un seul gros volume de data centralisé dans un seul shard représentant la totalité de l'index.
 
 #### 3) Avantage de replicas:
 - la présence de replica fournit une haute disponibilité de data (sur plusieurs noeuds) et garantit la non-perte de data en cas de panne de serveur (noeud) sur lequel se trouve le shard (d'origine de ce replicas):
 --> Remarque: On ne met jamais le shard et son propre replica sur le meme noeud, l'idée est d'éviter les pannes:
-par exemple on a un shard A sur un noeud 1 et son replica A1 sur un noeud 2, si le noeud 1 ne marche plus, on ne perd pas nos data sur le shard A, car on a une copie déjà sur le replica A1 sur un autre noeud/
+par exemple on a un shard A sur un noeud 1 et son replica A1 sur un noeud 2, si le noeud 1 ne marche plus, on ne perd pas nos data sur le shard A, car on a une copie déjà sur le replica A1 sur un autre noeud.
 
 - la présence de replicas nous permet de faire de la mise à l'échelle de débit et volume de nos opérations sur le data: voir que les opérations de recherche (par exp) peuvent etre faites en parallèle sur tous les replicas.
