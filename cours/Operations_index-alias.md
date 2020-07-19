@@ -22,8 +22,8 @@
 
 #### 2- Utiliser l' Alias dans le code de l'application client:
 - Problématique: 
-  - **a.** Si on mentionne le nom de l'index dans plusieurs endroits de code de l'application (java, python..), et après on souhaite renamer cet index (pour une raison **b**), on sera obligé de fouiller le code pour changer le nom de cet index plusieurs fois.
-  - **b.** Quand on souhaite renamer un index ??  
+  - **a.** Si on mentionne le nom de l'index dans plusieurs endroits de code de l'application (java, python..), et après on souhaite renommer cet index (pour une raison **b**), on sera obligé de fouiller le code pour changer le nom de cet index plusieurs fois.
+  - **b.** Quand on souhaite renommer un index ??  
     - On sait qu'on ne peut pas modifier le nombre de shards d'un index après sa création. 
     - Pour modifier le nombre de shards d'un index, nous sommes obligés de changer son nom: **On change le nom de l'index et cette fois-ci on doit modifier le nombre de shards**.
     - L'inconvénient de cette  technique: si on utilise le nom de cet index dans plusieurs endroits de code source (java,..) de l'application web => il faut modifier le code source :(
@@ -78,7 +78,7 @@ GET {name_of_alias}/_search
 DELETE {name_of_index}/_alias/{name_of_alias}
 ```
 - Après cet appel:
-  - l'index **{name_of_index}** ne sera plus référencié par l'alias **{name_of_alias}**: çàd que le doc de cet index ne sera plus contenu dans cet alias.
+  - l'index **{name_of_index}** ne sera plus référencié par l'alias **{name_of_alias}**: çàd que les docs de cet index ne seront plus contenus dans cet alias.
   - mais cet index reste tjrs présent (si on fait **GET** de cet index, il sera **found**)
 
 - Exemple: Si on suppose que l'index-alias "**index-alias-1**" fait déjà réf aux index 1, 2 et 3 et qu'on souhaite effacer l'index 1 "**index-1**" de cet alias, on doit lancer cet appel:
