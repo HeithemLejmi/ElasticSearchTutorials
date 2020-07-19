@@ -5,8 +5,8 @@
   ```javascript
     PUT {name_index}/_doc/{_id_doc}
     {
-        "field1": xxx,
-        "field2": yyy
+        "field1": "xxx",
+        "field2": "yyy"
          
     }
   ```
@@ -15,8 +15,8 @@
     ```javascript
     POST {name_index}/_doc/{_id_doc}
     {
-        "field1": xxx,
-        "field2": yyy
+        "field1": "xxx",
+        "field2": "yyy"
          
     }
   ```
@@ -64,7 +64,7 @@ POST {name_index}/_update/{id_doc}
 }
 ```
 - A noter que:
-  - l'opération d'update ne modifie/màj que les champs passés dans le cors de la request, et laisse les autres champs intacts.
+  - l'opération d'update ne modifie/màj que les champs passés dans le corps de la request, et laisse les autres champs intacts.
   - avec chaque opération d'update d'un document, la version de ce document sera incrémentée.
 
 - Par exemple, si on souhaite mettre à jour le doc d'id : **5rk7ZHEBkCzlIo0Xy1pC** de l'index **sogeti_skills_manager**, en corrigant le champs **skill** du "Kubernetes" à "GCP":
