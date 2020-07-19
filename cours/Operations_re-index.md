@@ -70,4 +70,4 @@ stockage => Augmentation de couts de stockage.
 - Si le doc n'existe pas encore dans l'index dest. (çàd son id n'est pas encore présent dans l'index dest.):
     -  ES crée ce doc dans le nouveau index
 - Si le doc existe déjà (dont l'id existe déjà dans l'index target):
-    - ES va tout d'abord regarder la version de ce doc dans l'index dest. et si cette version est plus ancienne que celle de doc dans l'index source, ES va MAJ ce doc et va préserver la meme version de l'index source (voir que c(='est la version la plus récente))
+    - ES va tout d'abord regarder la version de ce doc dans l'index dest. et si cette version est plus ancienne que celle de doc dans l'index source, ES va MAJ ce doc et va préserver la meme version de l'index source (voir que c'est la version la plus récente)
