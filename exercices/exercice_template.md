@@ -25,7 +25,7 @@ PUT _template/elastic-logs
 ```
   - Remarque: l'index_patterns est un array, donc on peut définir plusieurs patterns dans le meme template
 
-- **Question 2: Crée un index en utilisant ce un template**
+- **Question 2: Crée un index en utilisant ce template**
   - Afin d'appliquer automatiqement le template au moment de création de l'index, il faut que le nom de cet index match l'**index_patterns** de template:
     ```javascript
     PUT elastic-logs-1
