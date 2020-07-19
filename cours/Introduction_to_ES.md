@@ -18,16 +18,16 @@ Les Data, en ES, sont contenus dans un index:
   - le nom d'index est utilisé pour faire réf à cet index, dans toutes les opérations: indexation des documents, search, update/delete des documents.. 
 
 #### 2) Document:
-- c'est l'information de base (unité de base) dans ES, qu'on peut l'indexr (le mettre en index), par exp:
---> dans un index de clients, un document représente un seul client,....
+- c'est l'information de base (unité de base) dans ES, qu'on peut l'indexer (le mettre en index), par exp:
+  - dans un index de clients, un document représente un seul client,....
 - le doc est exprimé (au moment d'indexation / recherche / update ...) sous format de json.
 
 
-Donc, en ES: les datas est organisés sous forme des documents contenus dans un index.
+Donc, en ES: les datas sont organisés sous forme des documents contenus dans un index.
 ES est schemaless (contrairement au BDR), çàd qu'il y a pas besoin de définir/etre engagé à un schema pour notre data => c'est pas la peine de définr un schema pour nos doc ou notre index (mais c'est possible qd mm de définir le mapping de l'index et de ses docs).
 
 ### B- Disposition physique de Data dans l'index: Index est composé des shards et des replicas
-=> un index est composé d'au moins un shard (1 ou plusieurs shards), et chaque shard peut avoir zero ou plusieurs replicas. 
+=> un index est composé d'au moins un shard (1 ou plusieurs shards), et chaque shard (fragment) peut avoir zero ou plusieurs replicas. 
 Remarques:
 * on ne peut pas créer un index sans aucun shard, ce pourquoi on a dit qu'un index doit etre composé d'au moins un shard.
 * Les datas contenus dans l'index sera distribé/partagé sur ses shards, çàd si l'index a un seul shard, cela veut dire que ce shard contient le 100% de data de son index.
