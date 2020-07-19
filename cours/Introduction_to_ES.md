@@ -35,7 +35,7 @@ Remarques:
 
 #### 1) Shard
 - Chaque shard est considéré comme fully-functional and independent index qui peut etre hébergé dans n'importe quel noeud (serveur) de notre cluster.
-- nb de shards, sur lequels est partagé notre index, est défini au moment de creation de cet index (le nb de shards est non modifiable, une fois l'index est créé, on ne peut plus modifier son nobmre de shards)
+- nb de shards, sur lequels est partagé notre index, est défini au moment de creation de cet index (le nb de shards est non modifiable, une fois l'index est créé, on ne peut plus modifier son nombre de shards)
 
 #### 2) Avantage d'utilisation de shards:
 - Les shards nous permettent de faire de up-scalling: partager horizontallement le volume total de data de l'index sur plusieurs shards.
